@@ -16,8 +16,15 @@ def Idade():
     idade_paciente = entradaIdade.get()   
 
 def mostrarIdade():
-    labelResultado2.config(text="Idade do paciente: ", fg="black")
-    labelIdadePaciente.config(text=idade_paciente, fg="red")
+
+    idade = int(idade_paciente)    
+
+    if (idade > 0 and idade <= 12) :
+        labelResultado2.config(text="Idade do paciente: ", fg="black")
+        labelIdadePaciente.config(text=f"{idade} (infantil)", fg="red")
+    else :
+        labelResultado2.config(text="Idade do paciente: ", fg="black")
+        labelIdadePaciente.config(text=f"{idade} (adulto)", fg="red")
 
 
 def executarTudo():
@@ -25,6 +32,15 @@ def executarTudo():
     mostrarNome()
     Idade()
     mostrarIdade()
+    verificarOutro()
+
+def verificarOutro(): 
+    if varOutro.get():
+        labelOutroMensagem.pack(side="left")
+    else:
+        labelOutroMensagem.pack_forget()
+
+
 
 window = Tk()
 window.title('Diagnóstico em Python')
@@ -81,8 +97,11 @@ check8.pack(anchor="w", padx=5)
 check9 = Checkbutton(window, text="Febre", font=("Arial", 11), fg="black")
 check9.pack(anchor="w", padx=5)
 
-check10 = Checkbutton(window, text="Outro", font=("Arial", 11), fg="black")
+varOutro = IntVar()
+check10 = Checkbutton(window, text="Outro", font=("Arial", 11), fg="black", variable=varOutro)
 check10.pack(anchor="w", padx=5)
+
+labelOutroMensagem = Label(window, text="Você está sentindo outro sintoma?\nEntre em contato com o Dr. Karev\n\nEmail: drkarev@gmail.com\nTelefone: 3013-3053",anchor="w", fg="black", font=("Arial", 10))
 
 # Botão de resultado
 botaoResultado = Button(window, text="Resultado", fg="blue", bg="white", font=("Arial", 11), width=10, command=executarTudo)
@@ -91,7 +110,6 @@ botaoResultado.pack(pady=5)
 frameResultado = Frame(window) # frame maior -> organiza e separa blocos de conteúdos
 frameResultado.pack(anchor="w")
 
-# Linha do nome do paciente
 frameNome = Frame(frameResultado) # frame (bloco)  para o nome
 frameNome.pack(anchor="w")
 
