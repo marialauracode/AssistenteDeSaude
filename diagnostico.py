@@ -1,6 +1,7 @@
 from tkinter import *
 
-nome_paciente = ""  # variável global, está fora da função e será modificada dentro da função a seguir
+nome_paciente = ""
+idade_paciente = ""   # variável global, está fora da função e será modificada dentro da função a seguir
 
 def selecionarNome():
     global nome_paciente
@@ -8,11 +9,22 @@ def selecionarNome():
 
 def mostrarNome():
     labelResultado.config(text="Nome completo do paciente:", fg="black")
-    labelNomePaciente.config(text=nome_paciente, fg="red")
+    labelNomePaciente.config(text=nome_paciente, fg="red")   
+
+def Idade():
+    global idade_paciente
+    idade_paciente = entradaIdade.get()   
+
+def mostrarIdade():
+    labelResultado2.config(text="Idade do paciente: ", fg="black")
+    labelIdadePaciente.config(text=idade_paciente, fg="red")
+
 
 def executarTudo():
     selecionarNome()
     mostrarNome()
+    Idade()
+    mostrarIdade()
 
 window = Tk()
 window.title('Diagnóstico em Python')
@@ -76,14 +88,28 @@ check10.pack(anchor="w", padx=5)
 botaoResultado = Button(window, text="Resultado", fg="blue", bg="white", font=("Arial", 11), width=10, command=executarTudo)
 botaoResultado.pack(pady=5)
 
-frameResultado = Frame(window)
+frameResultado = Frame(window) # frame maior -> organiza e separa blocos de conteúdos
 frameResultado.pack(anchor="w")
-# Label para o resultado
-labelResultado = Label(frameResultado, font=("Arial", 10), anchor="w", wraplength=250)
-labelResultado.pack(side="left", padx=2)
 
-# Label para o nome do paciente
-labelNomePaciente = Label(frameResultado, text="", font=("Arial", 10), anchor="w", wraplength=250)
-labelNomePaciente.pack(side="left", padx=2)
+# Linha do nome do paciente
+frameNome = Frame(frameResultado) # frame (bloco)  para o nome
+frameNome.pack(anchor="w")
+
+labelResultado = Label(frameNome, text="", font=("Arial", 10), fg="black")
+labelResultado.pack(side="left")
+
+labelNomePaciente = Label(frameNome, text="", font=("Arial", 10), fg="red")
+labelNomePaciente.pack(side="left")
+
+frameIdade = Frame(frameResultado) # frame (bloco) para a idade
+frameIdade.pack(anchor="w")
+
+labelResultado2 = Label(frameIdade, text="", font=("Arial", 10), fg="black")
+labelResultado2.pack(side="left")
+
+labelIdadePaciente = Label(frameIdade, text="", font=("Arial", 10), fg="red")
+labelIdadePaciente.pack(side="left")
+
+
 
 window.mainloop()
