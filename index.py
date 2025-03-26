@@ -9,7 +9,6 @@ def selecionarNome():
     nome_paciente = entradaNome.get()
 
 def mostrarNome():
-    
      labelResultado.config(text="Nome completo do paciente:", fg="black",)
      labelNomePaciente.config(text=nome_paciente, fg="red")   
 
@@ -36,15 +35,14 @@ def mostrarSintomas():
     
     if sintomas_exibidos:
         labelResultado3.config(text="Sintomas:", fg="black")
-        labelSintomasPaciente.config(text=", ".join(sintomas_exibidos), fg="red", wraplength=210, anchor="w")
+        labelSintomasPaciente.config(text=", ".join(sintomas_exibidos), fg="red", wraplength=285, anchor="w")
         
-        # Criando uma estrutura separada para "Procure um especialista." ficar vermelho
         labelRecomendacao.config(text="Recomendação médica:", fg="black", wraplength=310)
         labelEspecialista.config(text="Procure um especialista.", fg="red")
     else:
-        labelResultado3.config(text="") # Sintomas:
+        labelResultado3.config(text="") 
         labelSintomasPaciente.config(text="Nenhum sintoma selecionado", fg="red")
-        labelRecomendacao.config(text="")  # Esconder a recomendação se não houver sintomas
+        labelRecomendacao.config(text="")  
         labelEspecialista.config(text="")
 
 def executarTudo():
@@ -58,34 +56,34 @@ def executarTudo():
 
 def verificarOutro(): 
     if varOutro.get():
-        labelOutroMensagem.pack(pady=25)
+        labelOutroMensagem.pack(pady=2)
     else:
         labelOutroMensagem.pack_forget()
 
 window = Tk()
 window.title('Assistente de Saúde Médica')
-window.geometry('300x700')
+window.geometry('355x756')
 
 labelTitulo = Label(window, fg="blue", font=("Arial", 15), text="ASSISTENTE DE SAÚDE")
 labelTitulo.pack(pady=5, anchor="center")
 
 # Nome do paciente
-labelNome = Label(window, fg="black", font=("Arial", 11), text="Nome completo do paciente:")
-labelNome.pack(anchor="w", padx=5)
+labelNome = Label(window, fg="black", font=("Arial", 12), text="Nome completo do paciente:")
+labelNome.pack(anchor="w", padx=5, pady=6)
 
-entradaNome = Entry(window, width=35)
-entradaNome.pack(anchor="w", padx=5)
+entradaNome = Entry(window, width=37)
+entradaNome.pack(anchor="w", padx=5, pady=3)
 entradaNome.focus()
 
 # Idade do paciente
-labelIdade = Label(window, fg="black", font=("Arial", 11), text="Idade do paciente:")
-labelIdade.pack(anchor="w", padx=5)
+labelIdade = Label(window, fg="black", font=("Arial", 12), text="Idade do paciente:")
+labelIdade.pack(anchor="w", padx=5, pady=6)
 
-entradaIdade = Entry(window, width=35)
-entradaIdade.pack(anchor="w", padx=5, pady=5)
+entradaIdade = Entry(window, width=37)
+entradaIdade.pack(anchor="w", padx=5, pady=3)
 
 # Sintomas
-labelSelecionar = Label(window, fg="black", font=("Arial", 11), text="Selecione até três sintomas:")
+labelSelecionar = Label(window, fg="black", font=("Arial", 12), text="Selecione até três sintomas:")
 labelSelecionar.pack(anchor="w", padx=5, pady=5)
 
 sintomas = ["Dor de cabeça", "Dor no corpo", "Dor de garganta", "Dor de dente", "Tosse","Tontura", "Coriza", "Enjoo", "Febre"]
@@ -111,19 +109,19 @@ frameResultado.pack(anchor="w", pady=6)
 frameNome = Frame(frameResultado)
 frameNome.pack(anchor="w")
 
-labelResultado = Label(frameNome, text="", font=("Arial", 10), fg="black")
-labelResultado.pack(side="left")
+labelResultado = Label(frameNome, text="", font=("Arial", 11), fg="black")
+labelResultado.pack(side="left", pady=5)
 
-labelNomePaciente = Label(frameNome, text="", font=("Arial", 10), fg="red", wraplength=100)
+labelNomePaciente = Label(frameNome, text="", font=("Arial", 11), fg="red", wraplength=180)
 labelNomePaciente.pack(side="left")
 
 frameIdade = Frame(frameResultado)
 frameIdade.pack(anchor="w")
 
-labelResultado2 = Label(frameIdade, text="", font=("Arial", 10), fg="black")
-labelResultado2.pack(side="left")
+labelResultado2 = Label(frameIdade, text="", font=("Arial", 11), fg="black")
+labelResultado2.pack(side="left", pady=5)
 
-labelIdadePaciente = Label(frameIdade, text="", font=("Arial", 10), fg="red")
+labelIdadePaciente = Label(frameIdade, text="", font=("Arial", 11), fg="red")
 labelIdadePaciente.pack(side="left")
 
 frameSintomas = Frame(frameResultado)
@@ -132,16 +130,16 @@ frameSintomas.pack(anchor="w")
 frameRecomendacao = Frame(frameResultado)
 frameRecomendacao.pack(anchor="w")
 
-labelRecomendacao = Label(frameRecomendacao, text="", font=("Arial", 10), fg="red")
-labelRecomendacao.pack(anchor="w", side="left")
+labelRecomendacao = Label(frameRecomendacao, text="", font=("Arial", 11), fg="red")
+labelRecomendacao.pack(anchor="w", side="left", pady=5)
 
-labelEspecialista = Label(frameRecomendacao, text="", font=("Arial", 10), fg="red")
-labelEspecialista.pack()
+labelEspecialista = Label(frameRecomendacao, text="", font=("Arial", 11), fg="red")
+labelEspecialista.pack(pady=5)
 
-labelResultado3 = Label(frameSintomas, text="", font=("Arial", 10), fg="black")
-labelResultado3.pack(anchor="w", side="left")
+labelResultado3 = Label(frameSintomas, text="", font=("Arial", 11), fg="black")
+labelResultado3.pack(anchor="w", side="left", pady=5)
 
-labelSintomasPaciente = Label(frameSintomas, text="", font=("Arial", 10), fg="red")
+labelSintomasPaciente = Label(frameSintomas, text="", font=("Arial", 11), fg="red")
 labelSintomasPaciente.pack(side="left", anchor="w")
 
 window.mainloop()
