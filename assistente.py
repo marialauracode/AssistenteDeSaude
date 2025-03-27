@@ -23,7 +23,7 @@ def mostrarIdade():
         labelResultado2.config(text="Idade do paciente:", fg="black")
         labelIdadePaciente.config(text=f"{idade} (infantil)", fg="red")
     else:
-        labelResultado2.config(text="Idade do paciente: ", fg="black")
+        labelResultado2.config(text="Idade do paciente:", fg="black")
         labelIdadePaciente.config(text=f"{idade} (adulto)", fg="red")
 
 def selecionarSintomas():
@@ -69,18 +69,18 @@ labelTitulo.pack(pady=5, anchor="center")
 
 # Nome do paciente
 labelNome = Label(window, fg="black", font=("Arial", 12), text="Nome completo do paciente:")
-labelNome.pack(anchor="w", padx=5, pady=6)
+labelNome.pack(anchor="w", pady=6)
 
 entradaNome = Entry(window, width=37)
-entradaNome.pack(anchor="w", padx=5, pady=3)
+entradaNome.pack(anchor="w", padx= 2, pady=3)
 entradaNome.focus()
 
 # Idade do paciente
 labelIdade = Label(window, fg="black", font=("Arial", 12), text="Idade do paciente:")
-labelIdade.pack(anchor="w", padx=5, pady=6)
+labelIdade.pack(anchor="w",  pady=6)
 
 entradaIdade = Entry(window, width=37)
-entradaIdade.pack(anchor="w", padx=5, pady=3)
+entradaIdade.pack(anchor="w", padx=2 , pady=3)
 
 # Sintomas
 labelSelecionar = Label(window, fg="black", font=("Arial", 12), text="Selecione até três sintomas:")
