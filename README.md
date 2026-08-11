@@ -17,4 +17,4 @@ O **Assistente de Saúde** é uma aplicação desenvolvida em Python com interfa
 * Apresentação de recomendações básicas;
 * Orientação para buscar atendimento profissional em casos específicos.
 
-
+## 👩🏻‍💻 Feito por Maria Laura Costa.
